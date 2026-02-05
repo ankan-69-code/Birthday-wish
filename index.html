@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,24 +31,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-
-        /* Music Button */
-        .music-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            color: white;
-            z-index: 100;
-            font-weight: bold;
-            display: none; /* Hidden until unlocked */
-        }
-        .music-btn:hover { background: rgba(255,255,255,0.4); }
 
         /* Login Screen */
         #input-screen {
@@ -155,12 +138,6 @@
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="song.mp3" type="audio/mpeg">
-    </audio>
-    <button class="music-btn" onclick="toggleMusic()"><i class="fas fa-play"></i> Play Music</button>
-
-
     <div id="input-screen">
         <h2><i class="fas fa-birthday-cake"></i> Ankan's Birthday</h2>
         <input type="password" id="passwordInput" placeholder="Password: ankan">
@@ -186,7 +163,6 @@
         const passCode = "ankan";
         // CHANGE THE MESSAGE HERE
         const message = "Happy Birthday! Wishing you a day filled with laughter, love, and all your favorite things. Have a blast! 🎂✨";
-        let audioPlaying = false;
 
         function checkPassword() {
             const input = document.getElementById('passwordInput').value.toLowerCase().trim();
@@ -202,7 +178,6 @@
         }
 
         function revealCard() {
-            document.querySelector('.music-btn').style.display = 'block';
             const card = document.getElementById('card-container');
             card.style.display = 'block';
             setTimeout(() => card.classList.add('show-card'), 50);
@@ -235,19 +210,6 @@
                 b.style.animationDuration = (Math.random()*5 + 5) + 's';
                 document.body.appendChild(b);
             }
-        }
-
-        function toggleMusic() {
-            const music = document.getElementById('bgMusic');
-            const btn = document.querySelector('.music-btn');
-            if (!audioPlaying) {
-                music.play();
-                btn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-            } else {
-                music.pause();
-                btn.innerHTML = '<i class="fas fa-play"></i> Play Music';
-            }
-            audioPlaying = !audioPlaying;
         }
     </script>
 </body>
